@@ -1,14 +1,28 @@
 <div class="container">
 	<h1>User ads</h1>
-	<ul>
-		<li ng-repeat="ad in data.ads" class="well">
-			<a href="#/ads/{{ad.id}}">
-				<h1>{{ad.title}}</h1>
-				<div><strong>Text:</strong> {{ad.text}}</div>
-				<div><strong>Town:</strong> {{ad.townName}}</div>
-				<div><strong>Category:</strong> {{ad.categoryName}}</div>
-				<div><strong>Status:</strong> {{ad.status}}</div>
-			</a>
-		</li>
+        
+        <ul class="col-md-3 row">
+            <li class="well col-md-12">
+                <p>Navigation</p>
+                <a href="#">Home</a>
+            </li>
+            <li class="well col-md-12">
+                <p>to push a new ad, please login.</p>
+                <a href="#">Login</a><br/>
+                <a href="#">Register</a>
+            </li>
+	</ul>
+        
+	<ul class="col-md-4 row">
+            <li ng-repeat="ad in data.ads" class="well col-md-12">
+                <a href="#/ads/{{ad.id}}">
+                    <h1>{{ad.title}}</h1>
+                    <div><strong>Text:</strong> {{ad.text}}</div>
+                    <div><strong>Town:</strong> {{ad.townName}}</div>
+                    <div><strong>Category:</strong> {{ad.categoryName}}</div>
+                    <div><strong>Status:</strong> {{ad.status}}</div>
+                    <div><strong>Date</strong> {{ad.date|date:"d-MMM-yyyy"}}</div>
+                </a>
+            </li>
 	</ul>
 </div>
