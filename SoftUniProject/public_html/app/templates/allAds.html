@@ -13,10 +13,29 @@
             </li>
 	</ul>
         
+        <div ng-repeat="ad in data.ads" class="modal-dialog col-md-6">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1>{{ad.title}}</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div><strong>Text:</strong> {{ad.text}}</div>
+                        <div><strong>Town:</strong> {{ad.townName}}</div>
+                        <div><strong>Category:</strong> {{ad.categoryName}}</div>
+                        <div><strong>Status:</strong> {{ad.status}}</div>
+                        <div><strong>Date</strong> {{ad.date|date:"d-MMM-yyyy"}}</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+        
 	<ul class="col-md-4 row">
             <li ng-repeat="ad in data.ads" class="well col-md-12">
                 <a href="#/ads/{{ad.id}}">
-                    <h1>{{ad.title}}</h1>
+                    
                     <div><strong>Text:</strong> {{ad.text}}</div>
                     <div><strong>Town:</strong> {{ad.townName}}</div>
                     <div><strong>Category:</strong> {{ad.categoryName}}</div>
