@@ -1,14 +1,24 @@
-.pesho {
-	color:red;
+.ad {
+    margin-bottom: 10px;
 }
 
-.pesho:hover {
-	color:blue 
-}
-.even_row {
-	background: red;
+.adTitle {
+/*    width: 70%;*/
+    display: block
+/*    margin-top: 0px;*/
 }
 
-.in_center {
-    margin: 0px auto;
+.adDate {
+    position: absolute;
+    right: 5%;
+}
+
+.rightSide {
+    position: relative;
+    width: 60%;
+    right: -40%;
+}
+
+.part {
+    margin-bottom: 4%;
 }

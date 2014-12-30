@@ -1,34 +1,88 @@
 <div class="container">
 	<h1>User ads</h1>
         
-        <ul class="col-md-3 row">
-            <li class="well col-md-12">
-                <p>Navigation</p>
-                <a href="#">Home</a>
-            </li>
-            <li class="well col-md-12">
-                <p>to push a new ad, please login.</p>
-                <a href="#">Login</a><br/>
-                <a href="#">Register</a>
-            </li>
-	</ul>
-        
-        <div ng-repeat="ad in data.ads" class="modal-dialog col-md-6">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1>{{ad.title}}</h1>
-                    </div>
-                    <div class="modal-body">
-                        <div><strong>Text:</strong> {{ad.text}}</div>
-                        <div><strong>Town:</strong> {{ad.townName}}</div>
-                        <div><strong>Category:</strong> {{ad.categoryName}}</div>
-                        <div><strong>Status:</strong> {{ad.status}}</div>
-                        <div><strong>Date</strong> {{ad.date|date:"d-MMM-yyyy"}}</div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
+        <div class="col-lg-2">
+            <div class="bs-component">
+              <div class="list-group">
+                <div class="list-group-item">
+                    <p>Navigation</p>
+                    <a href="#">Home</a>
                 </div>
+                <!--class for active: active-->
+              </div>
+            </div>
+            
+            <div class="bs-component">
+              <div class="list-group">
+                <div class="list-group-item">
+                    <p>to push a new ad, please login.</p>
+                    <a href="#/login">Login</a><br/>
+                    <a href="#/register">Register</a>
+                </div>
+                <!--class for active: active-->
+              </div>
+            </div>
+        </div>
+        
+        <div class="modal-dialog col-md-5">
+            <div ng-repeat="ad in data.ads" class="ad">
+                <div class="modal-content">
+                    <div class="modal-header row">
+                        <h3 class="col-md-6">{{ad.title}}</h3>
+                        <span class="col-md-3 adDate">{{ad.date|date:"d-MMM-yyyy"}}</span>
+                    </div>
+                    <div class="modal-body row">
+                        <img ng-src="{{ad.imageDataUrl}}" src="" class="col-md-4">
+                        <section class="col-md-8 row">
+                            <div class="col-md-12 ad">
+                                <span class="list-group-item textOfAd">
+                                    {{ad.text}}
+                                </span>
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Name:</strong>
+                                <span class="list-group-item col-md-8">
+                                    {{ad.ownerName}}
+                                </span>
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">E-mail:</strong> 
+                                <span class="list-group-item col-md-8">
+                                    {{ad.ownerEmail}}
+                                </span>
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Tel.</strong> 
+                                <span class="list-group-item col-md-8">
+                                    {{ad.ownerPhone}}
+                                </span>
+                            </div>
+                        </section>
+                    </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3">
+            <div class="bs-component">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="badge">14</span>
+                  Cras justo odio
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">2</span>
+                  Dapibus ac facilisis in
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">1</span>
+                  Morbi leo risus
+                </li>
+              </ul>
+            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+          </div>
 </div>
