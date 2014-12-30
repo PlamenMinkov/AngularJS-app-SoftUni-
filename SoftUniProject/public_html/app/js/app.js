@@ -4,7 +4,7 @@ var app = angular.module('softUniApp', ['ngResource', 'ngRoute'])
 			templateUrl: 'templates/newAd.html',
 			controller: 'NewAdController'
 		});
-		$routeProvider.when('/ads', {
+		$routeProvider.when('/', {
 			templateUrl: 'templates/allAds.html',
 			controller: 'AllAdsController'
 		});
