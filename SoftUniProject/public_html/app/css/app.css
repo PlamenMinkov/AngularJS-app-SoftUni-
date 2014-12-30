@@ -6,7 +6,7 @@
     list-style: none;
 }
 
-.adTitle {
+.adTitle, .username {
 /*    width: 70%;*/
     display: block
 /*    margin-top: 0px;*/
