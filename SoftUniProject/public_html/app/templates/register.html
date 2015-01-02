@@ -23,47 +23,57 @@
     </div>
     
     <div class="well bs-component col-md-8">
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="loginForm">
           <fieldset class='row'>
             <legend>Register</legend>
             <div class="form-group username">
               <label for="username" class="col-lg-2 control-label">Username:</label>
               <div class="col-lg-4">
-                <input type="text" class="form-control" id="username" placeholder="Username">
+                <input type="text" class="form-control" id="username" 
+                       placeholder="Username" ng-model="reg.username">
               </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">Password:</label>
                 <div class="col-lg-4">
                     <input type="password" class="form-control" 
-                           id="inputPassword" placeholder="Password">
+                           id="inputPassword" placeholder="Password"
+                           ng-model="reg.password">
                 </div>
                 <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password:</label>
                 <div class="col-lg-4">
                     <input type="password" class="form-control" 
-                           id="confirmPassword" placeholder="Confirm Password">
+                           id="confirmPassword" placeholder="Confirm Password"
+                           ng-model="reg.confirmPassword">
                 </div>
             </div>
             <div class="form-group">
                 <label for="name" class="col-lg-2 control-label">Name:</label>
                 <div class="col-lg-4">
-                  <input type="text" class="form-control" id="name" placeholder="Name">
+                  <input type="text" class="form-control" id="name" 
+                         placeholder="Name" ng-model="reg.name">
                 </div>
               <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
               <div class="col-lg-4">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                <input type="text" class="form-control" id="inputEmail" 
+                       placeholder="Email" ng-model="reg.email">
               </div>
             </div>
             <div class="form-group">
                 <label for="phone" class="col-lg-2 control-label">Phone:</label>
                 <div class="col-lg-4">
-                  <input type="text" class="form-control" id="phone" placeholder="Phone">
+                  <input type="text" class="form-control" id="phone" 
+                         placeholder="Phone" ng-model="reg.phone">
                 </div>
               <label for="town" class="col-lg-2 control-label">Town:</label>
               <div class="col-lg-4">
-                <input type="text" class="form-control" id="town" placeholder="Email">
+                <input type="text" class="form-control" id="town" 
+                       placeholder="Email" ng-model="reg.town">
               </div>
             </div>
+            <button type="button" class="btn btn-default" 
+                    ng-click="regFunc(reg)">Register
+            </button>
           </fieldset>
         </form>
         <button>
