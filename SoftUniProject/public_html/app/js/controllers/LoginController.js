@@ -3,11 +3,16 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
         adsData.login(ad)
         .$promise
         .then(function (data) {
-            alert('Success login!' + data);
+            showInfoMessage("Successful Login");
             $location.path('');
         },
         function (error) {
-            $log.error(error);
+            showInfoMessage("Invalid username or password!");
+            $(".loginInputs").css({
+                "border-color": "#FF2010", 
+                "border-width":"1px", 
+                "border-style":"solid"
+            });
         });
     };
 });
