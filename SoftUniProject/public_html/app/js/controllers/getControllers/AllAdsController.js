@@ -6,4 +6,12 @@ app.controller('AllAdsController', function($scope, adsData, $log) {
         }, function (error) {
                 $log.error(error);
     });
+
+    adsData.getAllTowns(function(resp){
+        $scope.towns = resp;
+    });
+    
+    adsData.getAllCategories(function(resp){
+        $scope.categories = resp;
+    });
 });

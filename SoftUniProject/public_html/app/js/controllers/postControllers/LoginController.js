@@ -4,6 +4,16 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
         .$promise
         .then(function (data) {
             showInfoMessage("Successful Login");
+    
+            //sessionStorage.removeItem('objectId');
+            sessionStorage.removeItem('username');
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('fullName');
+
+            //sessionStorage.setItem('objectId', data['objectId']);
+            sessionStorage.setItem('username', data['username']);
+            sessionStorage.setItem('access_token', data['access_token']);
+            
             $location.path('');
         },
         function (error) {
