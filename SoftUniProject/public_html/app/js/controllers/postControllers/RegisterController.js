@@ -3,12 +3,16 @@ app.controller('RegisterController', function($scope, $location, $log, adsData) 
         adsData.register(ad)
         .$promise
         .then(function (data) {
-            alert(JSON.stringify(data));
+            showInfoMessage("Successful Registration");
             $location.path('');
         },
         function (error) {
-            console.log("greashka");
-            $log.error(error);
+            showInfoMessage("Invalid registration!");
+            $(".registerInput").css({
+                "border-color": "#FF2010", 
+                "border-width":"1px", 
+                "border-style":"solid"
+            });
         });
     };
 });
