@@ -1,5 +1,5 @@
 app.controller('UserAdsController', function($scope, adsData, $log) {
-    adsData.getAll()
+    adsData.getUsersAds()
         .$promise
         .then(function (data) {
                 $scope.data = data;

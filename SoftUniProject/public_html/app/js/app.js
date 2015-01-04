@@ -24,6 +24,10 @@ var app = angular.module('softUniApp', ['ngResource', 'ngRoute'])
             templateUrl: 'templates/user/home.html',
             controller: 'AllAdsController'
         });
+        $routeProvider.when('/user/ads', {
+            templateUrl: 'templates/user/ads.html',
+            controller: 'UserAdsController'
+        });
     });
 
 

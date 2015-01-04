@@ -1,6 +1,7 @@
 <script>
-    console.log("daaaa");
-    $hello = $("<li><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+    $("#hello").remove();
+    
+    $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
     $("#headerMenu").prepend($hello);
 </script>
 <div class="container row">        
@@ -9,21 +10,10 @@
               <div class="list-group">
                 <div class="list-group-item">
                     <p>Navigation</p>
-                    <a href="#">Home</a>
-                    <a href="#">My Ads</a>
-                    <a href="#">Publish new ad</a>
-                    <a href="#">Edit profile</a>
-                </div>
-                <!--class for active: active-->
-              </div>
-            </div>
-            
-            <div class="bs-component">
-              <div class="list-group">
-                <div class="list-group-item">
-                    <p>to push a new ad, please login.</p>
-                    <a href="#/login">Login</a><br/>
-                    <a href="#/register">Register</a>
+                    <a href="#/user/home">Home</a><br/>
+                    <a href="#/user/ads">My Ads</a><br/>
+                    <a href="#">Publish new ad</a><br/>
+                    <a href="#">Edit profile</a><br/>
                 </div>
                 <!--class for active: active-->
               </div>
@@ -65,10 +55,10 @@
                             </div>
                         </section>
                     </div>
-                <div class="modal-footer">
+                <!--<div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div>-->
                 </div>
             </div>
         </div>
