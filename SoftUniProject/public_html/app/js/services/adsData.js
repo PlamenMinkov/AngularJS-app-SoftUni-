@@ -1,12 +1,21 @@
 app.factory('adsData', function ($resource, $http) {
     var access_token = '';
-    
-    if(localStorage['access_token']) {
-        access_token = localStorage['access_token'];
+    function setAccessToken () {
+        if(localStorage['user']) {
+            access_token = localStorage.getObject('user').access_token;
+            
+            $http.defaults.headers.common['Authorization'] = 
+            'Bearer ' + access_token;
+        }
+        else {
+            console.log("nqma");
+        }
     }
     
-    $http.defaults.headers.common['Authorization'] = 
-            'Bearer ' + access_token;
+    function removeAccessToken() {
+        $http.defaults.headers.common['Authorization'] = 
+            'Bearer ' + "";
+    }
 
     var resource = function(selectUrl) {
         return $resource(
@@ -19,6 +28,7 @@ app.factory('adsData', function ($resource, $http) {
     };
     
     function getAllAds() {
+        removeAccessToken();
         var output = resource('http://softuni-ads.azurewebsites.net/api/ads?pagesize=4&startpage=1');
         return output.get();
     }
@@ -35,16 +45,24 @@ app.factory('adsData', function ($resource, $http) {
 
     function register(data) {
         var output = 
-                resource('http://softuni-ads.azurewebsites.net/api/user/register');
+            resource('http://softuni-ads.azurewebsites.net/api/user/register');
         return output.save(data);
     }
 
     function getAdById(id) {
+        setAccessToken ();
         var output = 
-                resource('http://softuni-ads.azurewebsites.net/api/user/register');
+            resource('http://softuni-ads.azurewebsites.net/api/user/register');
         return output.get({id: id});
     }
-
+    
+    function getUsersAds() {
+        setAccessToken ();
+        var output = 
+            resource('http://softuni-ads.azurewebsites.net/api/user/ads');
+        return output.get();
+    }
+    
     function editAd(id, ad) {
         return resource.update({id: id}, ad);
     }
@@ -55,6 +73,7 @@ app.factory('adsData', function ($resource, $http) {
 
     return {
         getAll: getAllAds,
+        getUsersAds: getUsersAds,
         getAllTowns: function(success) {
             $http({method: 'GET', url: 'http://softuni-ads.azurewebsites.net/api/towns'})
                     .success(function(data, status, headers, config){

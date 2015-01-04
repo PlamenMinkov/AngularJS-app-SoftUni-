@@ -7,9 +7,10 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
     
             localStorage.removeItem('user');
             
-            localStorage.setObject('user', JSON.stringify(data));
+            localStorage.setObject('user', data);
+            console.log(data);
             
-            $location.path('');
+            $location.path('/user/home');
         },
         function (error) {
             showInfoMessage("Invalid username or password!");
