@@ -4,6 +4,11 @@ app.controller('RegisterController', function($scope, $location, $log, adsData) 
         .$promise
         .then(function (data) {
             showInfoMessage("Successful Registration");
+    
+            localStorage.removeItem('user');
+            
+            localStorage.setObject('user', JSON.stringify(data));
+            
             $location.path('');
         },
         function (error) {

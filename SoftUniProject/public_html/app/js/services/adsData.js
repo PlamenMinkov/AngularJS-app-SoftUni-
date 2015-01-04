@@ -40,7 +40,9 @@ app.factory('adsData', function ($resource, $http) {
     }
 
     function getAdById(id) {
-        return resource.get({id: id});
+        var output = 
+                resource('http://softuni-ads.azurewebsites.net/api/user/register');
+        return output.get({id: id});
     }
 
     function editAd(id, ad) {
