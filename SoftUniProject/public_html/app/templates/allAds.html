@@ -23,7 +23,7 @@
         </div>
         
         <div class="modal-dialog col-md-5">
-            <div ng-repeat="ad in data.ads" class="ad">
+            <div ng-repeat="ad in data.ads | orderBy:'' | filter: filterByTown | filter: filterByCategory" class="ad">
                 <div class="modal-content">
                     <div class="modal-header row">
                         <h3 class="col-md-6">{{ad.title}}</h3>
@@ -64,37 +64,33 @@
                 </div>
             </div>
         </div>
-        
-        <!--<div class="col-lg-3">
-            <div class="bs-component">
-                <h3>Categories</h3>
-              <ul ng-repeat="category in categories" class="list-group">
-                <li class="list-group-item">
-                  <span class="badge">14</span>
-                  <a>{{category.name}}</a>
-                </li>
-              </ul>
-            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
-          </div>-->
+    <div class="col-md-3">
+      <div class="bs-component">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Filter by categories</h3>
+            </div>
+            <!-- filter by category-->
+            <select ng-model="filterByCategory.categoryId" class="filters form-control" id="filtterByCategory">
+              <option selected value="">All</option>
+              <option ng-repeat="category in categories" value="{{category.id}}">
+                  {{category.name}}
+              </option>
+            </select>
+        </div>
+        </div>
+        <div class="filters bs-component">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Filter by town</h3>
+              </div>
+                <!-- filter by category-->
+                <select ng-model="filterByTown.townId" class="form-control" id="filtterByCategory">
+                  <option selected value="">All</option>
+                  <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                </select>
+            </div>
+        </div>  
+    </div>
     
-    <div class="bs-component col-lg-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Categories</h3>
-          </div>
-          <div ng-repeat="category in categories" class="panel-body">
-            {{category.name}}
-          </div>
-        </div>
-    </div>
-    <div class="bs-component col-lg-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Towns</h3>
-          </div>
-          <div ng-repeat="town in towns" class="panel-body">
-            {{town.name}}
-          </div>
-        </div>
-    </div>
 </div>

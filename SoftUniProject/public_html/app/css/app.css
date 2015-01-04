@@ -17,6 +17,11 @@
     right: 5%;
 }
 
+/*.filters {
+    position: absolute;
+    right: 5%;
+}*/
+
 .rightSide {
     position: relative;
     width: 60%;
