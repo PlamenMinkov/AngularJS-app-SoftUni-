@@ -2,7 +2,8 @@ app.controller('UserAdsController', function($scope, adsData, $log) {
     adsData.getUsersAds()
         .$promise
         .then(function (data) {
-                $scope.data = data;
+            $scope.data = data;
+            console.log(data);
         }, function (error) {
             $log.error(error);
     });

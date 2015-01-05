@@ -1,3 +1,9 @@
+<script>
+    $("#hello").remove();
+    
+    $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+    $("#headerMenu").prepend($hello);
+</script>
 <div class="container row">        
         <div class="col-lg-2">
             <div class="bs-component">
@@ -49,10 +55,10 @@
                             </div>
                         </section>
                     </div>
-                <div class="modal-footer">
+                <!--<div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div>-->
                 </div>
             </div>
         </div>
