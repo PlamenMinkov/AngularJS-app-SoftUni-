@@ -21,3 +21,14 @@ function ifHaveLoginUser () {
     }
 }
 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#adImage')
+              .attr('src', e.target.result)
+              .height(200);
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+    }

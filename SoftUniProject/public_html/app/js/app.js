@@ -30,7 +30,7 @@ var app = angular.module('softUniApp', ['ngResource', 'ngRoute'])
         });
         $routeProvider.when('/user/ads/publish', {
             templateUrl: 'templates/user/ads/publish.html',
-            controller: 'NewAddController'
+            controller: 'NewAdController'
         });
     });
 
