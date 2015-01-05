@@ -1,0 +1,29 @@
+<script>
+    $("#hello").remove();
+    
+    $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+    $("#headerMenu").prepend($hello);
+</script>
+<div class="container row">        
+        <div class="col-lg-2">
+            <div class="bs-component">
+              <div class="list-group">
+                <div class="list-group-item">
+                    <p>Navigation</p>
+                    <a href="#/user/home">Home</a><br/>
+                    <a href="#/user/ads">My Ads</a><br/>
+                    <a href="#">Publish new ad</a><br/>
+                    <a href="#">Edit profile</a><br/>
+                </div>
+                <!--class for active: active-->
+              </div>
+            </div>
+        </div>
+        
+        <!--<div class="modal-dialog col-md-5">
+            <div ng-repeat="ad in data.ads | orderBy:'' | filter: filterByTown | filter: filterByCategory" class="ad">
+                
+            </div>
+        </div>-->
+    
+</div>
