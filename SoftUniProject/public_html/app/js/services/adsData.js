@@ -34,6 +34,7 @@ app.factory('adsData', function ($resource, $http) {
     }
     
     function createNewAd(ad) {
+        setAccessToken ();
         var output = resource('http://softuni-ads.azurewebsites.net/api/user/ads');
         return output.save(ad);
     }
