@@ -36,29 +36,24 @@
                                 </span>
                             </div>
                             <div class="col-md-12 row ad">
-                                <strong class="col-md-3">Name:</strong>
+                                <strong class="col-md-3">Category:</strong>
                                 <span class="list-group-item col-md-8">
-                                    {{ad.ownerName}}
+                                    {{ad.categoryName}}
                                 </span>
                             </div>
                             <div class="col-md-12 row ad">
-                                <strong class="col-md-3">E-mail:</strong> 
+                                <strong class="col-md-3">Town:</strong> 
                                 <span class="list-group-item col-md-8">
-                                    {{ad.ownerEmail}}
-                                </span>
-                            </div>
-                            <div class="col-md-12 row ad">
-                                <strong class="col-md-3">Tel.</strong> 
-                                <span class="list-group-item col-md-8">
-                                    {{ad.ownerPhone}}
+                                    {{ad.townName}}
                                 </span>
                             </div>
                         </section>
                     </div>
-                <!--<div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" 
+                          data-dismiss="modal" ng-click="deleteAd(ad.id)">Delete</button>
                   <button type="button" class="btn btn-primary">Save changes</button>
-                </div>-->
+                </div>
                 </div>
             </div>
         </div>

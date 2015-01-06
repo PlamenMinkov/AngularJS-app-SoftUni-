@@ -33,7 +33,14 @@ app.factory('adsData', function ($resource, $http) {
         return output.get();
     }
     
+    function getUser() {
+        setAccessToken ();
+        var output = resource('http://softuni-ads.azurewebsites.net/api/user/profile');
+        return output.get();
+    }
+    
     function createNewAd(ad) {
+        console.log(ad);
         setAccessToken ();
         var output = resource('http://softuni-ads.azurewebsites.net/api/user/ads');
         return output.save(ad);
@@ -69,11 +76,16 @@ app.factory('adsData', function ($resource, $http) {
     }
 
     function deleteAd(id) {
+        console.log(id);
+        setAccessToken ();
+        var output = 
+            resource('http://softuni-ads.azurewebsites.net/api/user/ads/');
         return resource.delete({id: id});
     }
 
     return {
         getAll: getAllAds,
+        getUser: getUser,
         getUsersAds: getUsersAds,
         getAllTowns: function(success) {
             $http({method: 'GET', url: 'http://softuni-ads.azurewebsites.net/api/towns'})
@@ -97,7 +109,15 @@ app.factory('adsData', function ($resource, $http) {
         create: createNewAd,
         getById: getAdById,
         edit: editAd,
-        delete: deleteAd,
+        delete: function(id) {
+            $http({method: 'DELETE', url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id})
+                .success(function(data, status, headers, config){
+                    showInfoMessage("Successful Delete");
+                })
+                .error(function(data, status, headers, config){
+                    $log.warn(data);
+                });
+        },
         login: login,
         register: register
     };

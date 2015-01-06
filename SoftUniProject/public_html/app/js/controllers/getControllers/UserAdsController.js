@@ -1,9 +1,8 @@
-app.controller('UserAdsController', function($scope, adsData, $log) {
+app.controller('UserAdsController', function($scope, adsData, $log, $location) {
     adsData.getUsersAds()
         .$promise
         .then(function (data) {
             $scope.data = data;
-            console.log(data);
         }, function (error) {
             $log.error(error);
     });
@@ -15,4 +14,10 @@ app.controller('UserAdsController', function($scope, adsData, $log) {
     adsData.getAllCategories(function(resp){
         $scope.categories = resp;
     });
+    
+    $scope.deleteAd = function (id) {
+        console.log(id);
+        adsData.delete(id);
+        $location.path('/user/home');
+    };
 });

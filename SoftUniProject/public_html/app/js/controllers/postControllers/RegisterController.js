@@ -1,5 +1,6 @@
 app.controller('RegisterController', function($scope, $location, $log, adsData) {
     $scope.regFunc = function (ad) {
+        console.log(JSON.stringify(ad));
         adsData.register(ad)
         .$promise
         .then(function (data) {
@@ -7,7 +8,9 @@ app.controller('RegisterController', function($scope, $location, $log, adsData) 
     
             localStorage.removeItem('user');
             
-            localStorage.setObject('user', JSON.stringify(data));
+            localStorage.setObject('user', data);
+            
+            console.log(localStorage.getObject('user'));
             
             $location.path('');
         },
