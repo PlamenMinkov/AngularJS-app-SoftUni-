@@ -32,3 +32,7 @@ function ifHaveLoginUser () {
           reader.readAsDataURL(input.files[0]);
         }
     }
+    
+    function reloadPage() {
+        window.setTimeout(function(){ document.location.reload(true); }, 5000);
+    }

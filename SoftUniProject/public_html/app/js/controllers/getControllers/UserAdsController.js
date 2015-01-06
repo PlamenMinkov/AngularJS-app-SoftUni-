@@ -1,12 +1,24 @@
 app.controller('UserAdsController', function($scope, adsData, $log, $location) {
-    adsData.getUsersAds()
+    $scope.ready = "false";
+    
+    getAdsWithFilter('');
+    
+    function getAdsWithFilter(filt) {
+        adsData.getUsersAds(filt)
         .$promise
         .then(function (data) {
             $scope.data = data;
+            $scope.ready = "true";
         }, function (error) {
             $log.error(error);
     });
-
+    }
+    
+    $scope.FilterAds = function(filter) {
+        showInfoMessage("Process is in action!");
+        getAdsWithFilter(filter);
+    };
+    
     adsData.getAllTowns(function(resp){
         $scope.towns = resp;
     });
@@ -16,8 +28,17 @@ app.controller('UserAdsController', function($scope, adsData, $log, $location) {
     });
     
     $scope.deleteAd = function (id) {
-        console.log(id);
         adsData.delete(id);
-        $location.path('/user/home');
+        getAdsWithFilter('');
+    };
+    
+    $scope.deactivateAd = function (id) {
+        adsData.deactivate(id);
+        getAdsWithFilter('');
+    };
+    
+    $scope.publishAgain = function (id) {
+        adsData.publishAgain(id);
+        getAdsWithFilter('');
     };
 });

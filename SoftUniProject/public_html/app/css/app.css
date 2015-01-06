@@ -44,3 +44,12 @@
     margin-top: 3%;
     margin-left: 5%;
 }
+
+.statusFilters {
+    list-style: none;
+}
+
+#listaOfStatusFilters {
+    width: 90%;
+    margin-left: -20%;
+}

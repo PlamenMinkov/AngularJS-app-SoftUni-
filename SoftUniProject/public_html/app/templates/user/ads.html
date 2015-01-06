@@ -18,10 +18,26 @@
                 <!--class for active: active-->
               </div>
             </div>
+        <div class="bs-component">
+          <div class="list-group">
+            <div class="list-group-item">
+                <p>Filter</p>
+                <ul id="listaOfStatusFilters">
+                    <li class="statusFilters" ng-click="FilterAds('')">All</li>
+                    <li class="statusFilters" ng-click="FilterAds('Published')">Published</li>
+                    <li class="statusFilters" ng-click="FilterAds('WaitingApproval')">Waiting Approval</li>
+                    <li class="statusFilters" ng-click="FilterAds('Inactive')">Inactive</li>
+                    <li class="statusFilters" ng-click="FilterAds('Rejected')">Rejected</li>
+                </ul>
+            </div>
+            <!--class for active: active-->
+          </div>
         </div>
+    </div>
         
         <div class="modal-dialog col-md-5">
-            <div ng-repeat="ad in data.ads | orderBy:'' | filter: filterByTown | filter: filterByCategory" class="ad">
+            <img src="http://graphictorque.com/designblog/wp-content/uploads/2014/04/circle-loading-animation.gif" ng-hide="ready">
+            <div ng-clock ng-repeat="ad in data.ads | orderBy:'' | filter: filterByTown | filter: filterByCategory" class="ad">
                 <div class="modal-content">
                     <div class="modal-header row">
                         <h3 class="col-md-6">{{ad.title}}</h3>
@@ -47,43 +63,25 @@
                                     {{ad.townName}}
                                 </span>
                             </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Status:</strong> 
+                                <span class="list-group-item col-md-8">
+                                    {{ad.status}}
+                                </span>
+                            </div>
                         </section>
                     </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" 
+                    <button type="button" ng-if="ad.status === 'Inactive'" class="btn btn-primary">Edit</button>
+                    <button type="button" ng-if="ad.status === 'Inactive'" 
+                            class="btn btn-primary" ng-click="publishAgain(ad.id)">Publish Again</button>
+                    <button type="button" class="btn btn-default" ng-if="ad.status === 'Inactive'"
                           data-dismiss="modal" ng-click="deleteAd(ad.id)">Delete</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" ng-if="ad.status !== 'Inactive'"
+                          data-dismiss="modal" ng-click="deactivateAd(ad.id)">Deactivate</button>
                 </div>
                 </div>
             </div>
         </div>
-    <div class="col-md-3">
-      <div class="bs-component">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Filter by categories</h3>
-            </div>
-            <!-- filter by category-->
-            <select ng-model="filterByCategory.categoryId" class="filters form-control" id="filtterByCategory">
-              <option selected value="">All</option>
-              <option ng-repeat="category in categories" value="{{category.id}}">
-                  {{category.name}}
-              </option>
-            </select>
-        </div>
-        </div>
-        <div class="filters bs-component">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Filter by town</h3>
-              </div>
-                <!-- filter by category-->
-                <select ng-model="filterByTown.townId" class="form-control" id="filtterByCategory">
-                  <option selected value="">All</option>
-                  <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-                </select>
-            </div>
-        </div>  
-    </div>
     
 </div>

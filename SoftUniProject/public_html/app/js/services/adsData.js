@@ -64,11 +64,19 @@ app.factory('adsData', function ($resource, $http) {
         return output.get({id: id});
     }
     
-    function getUsersAds() {
+    function getUsersAds(filter) {
         setAccessToken ();
-        var output = 
-            resource('http://softuni-ads.azurewebsites.net/api/user/ads');
-        return output.get();
+        
+        if(filter === '') {
+            var output = 
+                resource('http://softuni-ads.azurewebsites.net/api/user/ads');
+            return output.get();
+        }
+        else {
+            var output = 
+                resource('http://softuni-ads.azurewebsites.net/api/user/ads?status=' + filter);
+            return output.get();
+        }
     }
     
     function editAd(id, ad) {
@@ -76,7 +84,6 @@ app.factory('adsData', function ($resource, $http) {
     }
 
     function deleteAd(id) {
-        console.log(id);
         setAccessToken ();
         var output = 
             resource('http://softuni-ads.azurewebsites.net/api/user/ads/');
@@ -110,9 +117,33 @@ app.factory('adsData', function ($resource, $http) {
         getById: getAdById,
         edit: editAd,
         delete: function(id) {
+            setAccessToken ();
             $http({method: 'DELETE', url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id})
                 .success(function(data, status, headers, config){
                     showInfoMessage("Successful Delete");
+                    reloadPage();
+                })
+                .error(function(data, status, headers, config){
+                    $log.warn(data);
+                });
+        },
+        deactivate: function(id) {
+            setAccessToken ();
+            $http({method: 'PUT', url: 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/' + id})
+                .success(function(data, status, headers, config){
+                    showInfoMessage("Successful Deactivation");
+                    reloadPage();
+                })
+                .error(function(data, status, headers, config, $log){
+                    $log.warn(data);
+                });
+        },
+        publishAgain: function(id) {
+            setAccessToken ();
+            $http({method: 'PUT', url: 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/' + id})
+                .success(function(data, status, headers, config){
+                    showInfoMessage("Successful Publishing");
+                    reloadPage();
                 })
                 .error(function(data, status, headers, config){
                     $log.warn(data);
