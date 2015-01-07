@@ -21,4 +21,8 @@ app.controller('RegisterController', function($scope, $location, $log, adsData) 
             });
         });
     };
+    
+    adsData.getAllTowns(function(resp){
+            $scope.towns = resp;
+        });
 });

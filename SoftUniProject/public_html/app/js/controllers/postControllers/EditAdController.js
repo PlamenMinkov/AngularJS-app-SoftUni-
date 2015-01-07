@@ -17,8 +17,6 @@ app.controller('EditAdController', function($scope, $location, $log, adsData) {
             ad.title = $("#newTitleOfAd").val();
             ad.text = $("#newTextOfAd").val();
             
-            console.log(ad);
-            console.log(id);
             adsData.editAd(ad, id)
             .$promise
             .then(function (data) {
@@ -39,7 +37,6 @@ app.controller('EditAdController', function($scope, $location, $log, adsData) {
 	$scope.cancelAdd = function () {
 		
 	};
-        
         
         adsData.getAllTowns(function(resp){
             $scope.towns = resp;

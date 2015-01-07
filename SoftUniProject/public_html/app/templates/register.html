@@ -67,18 +67,17 @@
                 </div>
               <label for="town" class="col-lg-2 control-label">Town:</label>
               <div class="col-lg-4">
-                <input type="text" class="form-control registerInput" id="town" 
-                       placeholder="Email" ng-model="reg.town">
+                <select ng-model="reg.townId" class="form-control col-md-7" id="filtterByTown">
+                    <option selected value="">All</option>
+                    <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                </select>
               </div>
             </div>
             <button type="button" class="btn btn-default" 
                     ng-click="regFunc(reg)">Register
             </button>
+            <a href="#/register">Login here</a>
           </fieldset>
         </form>
-        <button>
-            <a href="#">Register</a>
-        </button>
-            <a href="#/register">Login here</a>
     </div>
 </div>

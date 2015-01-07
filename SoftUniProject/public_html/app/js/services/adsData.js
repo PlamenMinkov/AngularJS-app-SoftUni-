@@ -27,9 +27,9 @@ app.factory('adsData', function ($resource, $http, $location) {
         });
     };
     
-    function getAllAds() {
+    function getAllAds(page) {
         removeAccessToken();
-        var output = resource('http://softuni-ads.azurewebsites.net/api/ads?pagesize=4&startpage=1');
+        var output = resource('http://softuni-ads.azurewebsites.net/api/ads?pagesize=2&startpage=' + page);
         return output.get();
     }
     
@@ -57,7 +57,6 @@ app.factory('adsData', function ($resource, $http, $location) {
     }
 
     function getAdById(id) {
-        console.log(id);
         setAccessToken ();
         var output = 
             resource('http://softuni-ads.azurewebsites.net/api/user/ads/' + id);
