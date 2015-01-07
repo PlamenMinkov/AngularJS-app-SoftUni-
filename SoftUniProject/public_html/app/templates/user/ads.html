@@ -72,12 +72,13 @@
                         </section>
                     </div>
                 <div class="modal-footer">
-                    <button type="button" ng-if="ad.status === 'Inactive'" class="btn btn-primary">Edit</button>
-                    <button type="button" ng-if="ad.status === 'Inactive'" 
+                    <button type="button" ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'" 
+                            class="btn btn-primary" ng-click="getUserAdById(ad.id)">Edit</button>
+                    <button type="button" ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'" 
                             class="btn btn-primary" ng-click="publishAgain(ad.id)">Publish Again</button>
-                    <button type="button" class="btn btn-default" ng-if="ad.status === 'Inactive'"
+                    <button type="button" class="btn btn-default" ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'"
                           data-dismiss="modal" ng-click="deleteAd(ad.id)">Delete</button>
-                    <button type="button" class="btn btn-default" ng-if="ad.status !== 'Inactive'"
+                    <button type="button" class="btn btn-default" ng-if="ad.status !== 'Inactive' && ad.status !== 'Rejected'"
                           data-dismiss="modal" ng-click="deactivateAd(ad.id)">Deactivate</button>
                 </div>
                 </div>

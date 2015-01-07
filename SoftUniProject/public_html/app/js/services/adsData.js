@@ -1,4 +1,4 @@
-app.factory('adsData', function ($resource, $http) {
+app.factory('adsData', function ($resource, $http, $location) {
     var access_token = '';
     function setAccessToken () {
         if(localStorage['user']) {
@@ -40,7 +40,6 @@ app.factory('adsData', function ($resource, $http) {
     }
     
     function createNewAd(ad) {
-        console.log(ad);
         setAccessToken ();
         var output = resource('http://softuni-ads.azurewebsites.net/api/user/ads');
         return output.save(ad);
@@ -58,9 +57,10 @@ app.factory('adsData', function ($resource, $http) {
     }
 
     function getAdById(id) {
+        console.log(id);
         setAccessToken ();
         var output = 
-            resource('http://softuni-ads.azurewebsites.net/api/user/register');
+            resource('http://softuni-ads.azurewebsites.net/api/user/ads/' + id);
         return output.get({id: id});
     }
     
@@ -79,15 +79,12 @@ app.factory('adsData', function ($resource, $http) {
         }
     }
     
-    function editAd(id, ad) {
-        return resource.update({id: id}, ad);
-    }
-
-    function deleteAd(id) {
+    function editAd(ad, id) {
+        console.log(JSON.stringify(ad));
         setAccessToken ();
         var output = 
-            resource('http://softuni-ads.azurewebsites.net/api/user/ads/');
-        return resource.delete({id: id});
+            resource('http://softuni-ads.azurewebsites.net/api/user/ads/' + id);
+        return output.update({id: id}, ad);
     }
 
     return {
@@ -115,7 +112,7 @@ app.factory('adsData', function ($resource, $http) {
         },
         create: createNewAd,
         getById: getAdById,
-        edit: editAd,
+        editAd: editAd,
         delete: function(id) {
             setAccessToken ();
             $http({method: 'DELETE', url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id})

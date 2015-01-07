@@ -7,10 +7,10 @@ app.controller('RegisterController', function($scope, $location, $log, adsData) 
             showInfoMessage("Successful Registration");
     
             localStorage.removeItem('user');
+            localStorage.removeItem('password');
             
             localStorage.setObject('user', data);
-            
-            console.log(localStorage.getObject('user'));
+            localStorage.setItem('password', ad.password);            
             
             $location.path('');
         },

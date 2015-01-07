@@ -1,0 +1,87 @@
+<script>
+    $("#hello").remove();
+    
+    $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+    $("#headerMenu").prepend($hello);
+    
+    $("#adImage").change(function() {
+         {{add();}};
+        }
+    );
+</script>
+<div class="container row">        
+        <div class="col-lg-2">
+            <div class="bs-component">
+              <div class="list-group">
+                <div class="list-group-item">
+                    <p>Navigation</p>
+                    <a href="#/user/home">Home</a><br/>
+                    <a href="#/user/ads">My Ads</a><br/>
+                    <a href="#">Publish new ad</a><br/>
+                    <a href="#">Edit profile</a><br/>
+                </div>
+                <!--class for active: active-->
+              </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="ad">
+                <div class="modal-content">
+                    <div class="modal-header row">
+                        <h3 class="col-md-6">Publish New Ad</h3>
+                    </div>
+                    <div class="modal-body row">
+                        <img id="adImage" src="#" ng-src="{{adByAd.imageDataUrl}}" class="col-md-3">
+                        <section id="newAddSection" class="col-md-9 row">
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Title:</strong>
+                                <input type="text" value="{{adByAd.title}}"  id="newTitleOfAd"
+                                       class="list-group-item col-md-8 newAddField"/>
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Text:</strong> 
+                                <input type="text" class="list-group-item col-md-8" id="newTextOfAd"
+                                       value="{{adByAd.text}}"/>
+                            </div>
+                        </section>
+                        
+                        <section id="downNewAdSection" class="row">
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Image:</strong> 
+                                <input type='file' class="file" onchange="readURL(this)" />
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Town:</strong>
+                                <span class="col-md-8">
+                                    <select ng-model="newAd.townId" class="form-control col-md-7" id="filtterByTown">
+                                        <option selected value="">All</option>
+                                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="col-md-12 row ad">
+                                <strong class="col-md-3">Category:</strong>
+                                <span class="col-md-8">
+                                    <select ng-model="newAd.categoryId" class="filters form-control" id="filtterByCategory">
+                                        <option selected value="">All</option>
+                                        <option ng-repeat="category in categories" value="{{category.id}}">
+                                            {{category.name}}
+                                        </option>
+                                    </select>
+                                </span>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" 
+                              data-dismiss="modal" ng-click="createAd(newAd, adByAd.id)">
+                          Publish</button>
+                      <a href="#" class="btn btn-primary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+</div>

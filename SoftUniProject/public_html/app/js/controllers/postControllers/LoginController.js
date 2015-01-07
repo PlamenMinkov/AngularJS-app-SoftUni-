@@ -6,9 +6,10 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
             showInfoMessage("Successful Login");
     
             localStorage.removeItem('user');
+            localStorage.removeItem('password');
             
             localStorage.setObject('user', data);
-            console.log(data);
+            localStorage.setItem('password', ad.password);
             
             $location.path('/user/home');
         },
@@ -16,6 +17,7 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
             showInfoMessage("Invalid username or password!");
             
             localStorage.removeItem('user');
+            localStorage.removeItem('password');
             
             $(".loginInputs").css({
                 "border-color": "#FF2010", 

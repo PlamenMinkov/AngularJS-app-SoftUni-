@@ -11,7 +11,7 @@ app.controller('UserAdsController', function($scope, adsData, $log, $location) {
             $scope.ready = "true";
         }, function (error) {
             $log.error(error);
-    });
+        });
     }
     
     $scope.FilterAds = function(filter) {
@@ -40,5 +40,11 @@ app.controller('UserAdsController', function($scope, adsData, $log, $location) {
     $scope.publishAgain = function (id) {
         adsData.publishAgain(id);
         getAdsWithFilter('');
+    };
+    
+    
+    $scope.getUserAdById = function(id) {
+        idOfAd = id;
+        $location.path('/user/ads/edit');
     };
 });

@@ -1,3 +1,5 @@
+var idOfAd = '19';
+
 function showInfoMessage(msg) {
     noty({
         text: msg,
