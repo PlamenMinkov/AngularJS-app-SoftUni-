@@ -36,6 +36,10 @@ var app = angular.module('softUniApp', ['ngResource', 'ngRoute'])
             templateUrl: 'templates/user/ads/edit.html',
             controller: 'EditAdController'
         });
+        $routeProvider.when('/user/profile', {
+            templateUrl: 'templates/user/profile.html',
+            controller: 'EditUserProfileAndPasswordControler'
+        });
     });
 
 

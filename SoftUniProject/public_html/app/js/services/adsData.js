@@ -80,14 +80,29 @@ app.factory('adsData', function ($resource, $http, $location) {
     }
     
     function editAd(ad, id) {
-        console.log(JSON.stringify(ad));
         setAccessToken ();
         var output = 
             resource('http://softuni-ads.azurewebsites.net/api/user/ads/' + id);
         return output.update({id: id}, ad);
     }
+    
+    function editUserProfile(ad) {
+        setAccessToken ();
+        var output = 
+            resource('http://softuni-ads.azurewebsites.net/api/user/profile');
+        return output.update(ad);
+    }
+    
+    function changePassword(ad) {
+        setAccessToken ();
+        var output = 
+            resource('http://softuni-ads.azurewebsites.net/api/user/changepassword');
+        return output.update(ad);
+    }
 
     return {
+        editUserProfile: editUserProfile,
+        changePassword: changePassword,
         getAll: getAllAds,
         getUser: getUser,
         getUsersAds: getUsersAds,

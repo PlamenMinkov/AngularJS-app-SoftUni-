@@ -6,10 +6,8 @@ app.controller('LoginController', function($scope, $location, $log, adsData) {
             showInfoMessage("Successful Login");
     
             localStorage.removeItem('user');
-            localStorage.removeItem('password');
             
             localStorage.setObject('user', data);
-            localStorage.setItem('password', ad.password);
             
             $location.path('/user/home');
         },

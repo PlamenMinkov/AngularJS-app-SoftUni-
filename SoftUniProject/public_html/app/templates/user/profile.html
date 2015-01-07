@@ -1,0 +1,96 @@
+<script>
+    $("#hello").remove();
+    
+    var $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+    $("#headerMenu").prepend($hello);
+    
+    $("#logout").remove();
+    
+    var $logout = $("<li id='logout'>\n\
+                        <button onclick='logout()' class='btn btn-default' >Logout</button></li>");
+    
+    $("#headerMenu_right").prepend($logout);
+</script>
+<div class="container row">        
+        <div class="col-lg-2">
+            <div class="bs-component">
+              <div class="list-group">
+                <div class="list-group-item">
+                    <p>Navigation</p>
+                    <a href="#/user/home">Home</a><br/>
+                    <a href="#/user/ads">My Ads</a><br/>
+                    <a href="#/user/ads/publish">Publish new ad</a><br/>
+                    <a href="#/user/profile">Edit profile</a><br/>
+                </div>
+                <!--class for active: active-->
+              </div>
+            </div>
+        </div>
+        
+    <div class="well bs-component col-md-8">
+        <form class="form-horizontal" name="loginForm">
+          <fieldset class='row'>
+            <legend>Register</legend>
+            <div class="form-group username">
+              <label for="username" class="col-lg-2 control-label">Name:</label>
+              <div class="col-lg-4">
+                <input type="text" class="form-control registerInput" id="newName"
+                       value="{{user.name}}">
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control registerInput" id="newEmail"
+                         value="{{user.email}}">
+                </div>
+                
+                <label for="inputPassword" class="col-lg-2 control-label">Old Password:</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control registerInput" 
+                           id="inputPassword" placeholder="Old Password" ng-model="pass.oldPassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-lg-2 control-label">Phone:</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control registerInput" id="newPhone" 
+                         placeholder="Name" value="{{user.phoneNumber}}">
+                </div>
+              
+              <label for="confirmPassword" class="col-lg-2 control-label">New Password:</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control registerInput" 
+                           id="confirmPassword" placeholder="New Password"
+                           ng-model="pass.newPassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-lg-2 control-label">Town:</label>
+                <div class="col-lg-4">
+                    <select ng-model="editInfo.townId" class="form-control col-md-7" id="filtterByTown">
+                        <option selected value="">All</option>
+                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                    </select>
+                </div>
+                <label for="town" class="col-lg-2 control-label">Confirm Password:</label>
+                    <div class="col-lg-4">
+                        <input type="password" class="form-control registerInput" 
+                           id="confirmPassword" placeholder="Confirm Password"
+                           ng-model="pass.confirmPassword">
+                    </div>
+                </div>
+            <button type="button" class="btn btn-default col-lg-4 funcButton" 
+                    ng-click="editProfile(editInfo)">Edit Profile
+            </button>
+            <button type="button" class="btn btn-primary ng-scope col-lg-3 funcButton" 
+                    ng-click="toHome()">Cancel
+            </button>
+            <button type="button" class="btn btn-default col-lg-4 funcButton" 
+                    ng-click="changePassword(pass)">Change Password
+            </button>
+          </fieldset>
+        </form>
+    </div>
+    
+</div>
