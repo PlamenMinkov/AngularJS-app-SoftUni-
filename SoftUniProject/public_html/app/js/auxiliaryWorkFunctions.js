@@ -38,3 +38,16 @@ function ifHaveLoginUser () {
     function reloadPage() {
         window.setTimeout(function(){ document.location.reload(true); }, 5000);
     }
+    
+    function setLogoutAndHelloMessage() {
+        $("#hello").remove();
+        $("#logout").remove();
+    
+        var $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
+        $("#headerMenu").prepend($hello);
+
+        var $logout = $("<li id='logout'>\n\
+                            <button onclick='logout()' class='btn btn-default' >Logout</button></li>");
+
+        $("#headerMenu_right").prepend($logout);
+    }

@@ -1,15 +1,5 @@
 <script>
-    $("#hello").remove();
-    
-    var $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
-    $("#headerMenu").prepend($hello);
-    
-    $("#logout").remove();
-    
-    var $logout = $("<li id='logout'>\n\
-                        <button onclick='logout()' class='btn btn-default' >Logout</button></li>");
-    
-    $("#headerMenu_right").prepend($logout);
+    setLogoutAndHelloMessage();
 </script>
 <div class="container row">        
         <div class="col-lg-2">
@@ -30,7 +20,7 @@
     <div class="well bs-component col-md-8">
         <form class="form-horizontal" name="loginForm">
           <fieldset class='row'>
-            <legend>Register</legend>
+            <legend>Edit Profile</legend>
             <div class="form-group username">
               <label for="username" class="col-lg-2 control-label">Name:</label>
               <div class="col-lg-4">

@@ -1,15 +1,5 @@
 <script>
-    $("#hello").remove();
-    
-    var $hello = $("<li id='hello'><a>Hello "+ localStorage.getObject("user").username +"</a></li>");
-    $("#headerMenu").prepend($hello);
-    
-    $("#logout").remove();
-    
-    var $logout = $("<li id='logout'>\n\
-                        <button onclick='logout()' class='btn btn-default' >Logout</button></li>");
-    
-    $("#headerMenu_right").prepend($logout);
+    setLogoutAndHelloMessage();
 </script>
 <div class="container row">        
         <div class="col-lg-2">

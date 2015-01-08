@@ -1,5 +1,8 @@
 app.controller('EditUserProfileAndPasswordControler', function($scope, $location, $log, adsData) {
-    adsData.getUser()
+    getUser();
+    
+    function getUser() {
+        adsData.getUser()
         .$promise
         .then(function (data) {
             $scope.user = data;
@@ -7,11 +10,21 @@ app.controller('EditUserProfileAndPasswordControler', function($scope, $location
         function (error) {
             showInfoMessage("Undefined error!");
         });
-        
+    }
+            
     $scope.editProfile = function (ad) {
-        ad.name = $("#newName").val();
-        ad.email = $("#newEmail").val();
-        ad.phoneNumber = $("#newPhone").val();
+        if(ad) {
+            ad.name = $("#newName").val();
+            ad.email = $("#newEmail").val();
+            ad.phoneNumber = $("#newPhone").val();
+        }
+        else {
+            ad = {
+              name: $("#newName").val(),
+              email: $("#newEmail").val(),
+              phoneNumber: $("#newPhone").val()
+            };
+        }
         
         console.log(JSON.stringify(ad));
         adsData.editUserProfile(ad)
@@ -19,7 +32,7 @@ app.controller('EditUserProfileAndPasswordControler', function($scope, $location
         .then(function (data) {
             showInfoMessage("Successful Edit");            
             
-            $location.path('/user/home');
+            getUser();
         },
         function (error) {
             showInfoMessage("Invalid Edit!");
