@@ -3,7 +3,7 @@ app.controller('EditAdController', function($scope, $location, $log, adsData) {
             .$promise
             .then(function (data) {
                 $scope.adByAd = data;
-                
+                console.log($scope.adByAd.imageDataURL);
             }, function (error) {
                 $log.error(error);
             });
@@ -11,21 +11,30 @@ app.controller('EditAdController', function($scope, $location, $log, adsData) {
     // for edit 
     
     $scope.createAd = function (ad, id) {
-            if($('#adImage').attr('src') !== '') {
-                ad.imageDataUrl = $('#adImage').attr('src');
-            }
+        if(ad) {
             ad.title = $("#newTitleOfAd").val();
             ad.text = $("#newTextOfAd").val();
+        }
+        else {
+            ad = {
+                title: $("#newTitleOfAd").val(),
+                text: $("#newTextOfAd").val()
+            };            
+        }
+            
+            if($('#editImg').attr('src') !== '') {
+                ad.imageDataURL = localStorage.getItem("editImg");
+            }
             
             adsData.editAd(ad, id)
             .$promise
             .then(function (data) {
-                showInfoMessage("Successful Add");
+                showInfoMessage("Successful Edit");
 
                 $location.path('/user/ads');
             },
             function (error) {
-                showInfoMessage("Invalid ad!");
+                showInfoMessage("Invalid Edit!");
                 $(".newAddField").css({
                     "border-color": "#FF2010", 
                     "border-width":"1px", 

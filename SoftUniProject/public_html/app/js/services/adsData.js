@@ -79,6 +79,7 @@ app.factory('adsData', function ($resource, $http, $location) {
     }
     
     function editAd(ad, id) {
+        console.log(ad);
         setAccessToken ();
         var output = 
             resource('http://softuni-ads.azurewebsites.net/api/user/ads/' + id);

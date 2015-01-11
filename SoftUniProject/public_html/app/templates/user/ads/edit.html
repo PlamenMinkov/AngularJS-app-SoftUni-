@@ -24,7 +24,7 @@
                         <h3 class="col-md-6">Publish New Ad</h3>
                     </div>
                     <div class="modal-body row">
-                        <img id="adImage" src="#" ng-src="{{adByAd.imageDataUrl}}" class="col-md-3">
+                        <img id="editImg" src="#" ng-src="{{adByAd.imageDataUrl}}" class="col-md-3">
                         <section id="newAddSection" class="col-md-9 row">
                             <div class="col-md-12 row ad">
                                 <strong class="col-md-3">Title:</strong>
@@ -41,7 +41,7 @@
                         <section id="downNewAdSection" class="row">
                             <div class="col-md-12 row ad">
                                 <strong class="col-md-3">Image:</strong> 
-                                <input type='file' class="file" onchange="readURL(this)" />
+                                <input type='file' class="file" onchange="readURL(this, 'editImg')" />
                             </div>
                             <div class="col-md-12 row ad">
                                 <strong class="col-md-3">Town:</strong>

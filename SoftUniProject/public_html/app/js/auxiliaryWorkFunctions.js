@@ -23,13 +23,15 @@ function ifHaveLoginUser () {
     }
 }
 
-    function readURL(input) {
+    function readURL(input, id) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
           reader.onload = function (e) {
-            $('#adImage')
+            $('#' + id)
               .attr('src', e.target.result)
               .height(200);
+              localStorage.setItem("editImg", e.target.result);
+              console.log(localStorage.getItem("editImg"));
           };
           reader.readAsDataURL(input.files[0]);
         }
